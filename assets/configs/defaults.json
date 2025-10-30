@@ -1,0 +1,60 @@
+{
+  "input_placeholders": [
+    "今天他给我买了奶茶，还记得少糖 🥤",
+    "一起看了日落，他说下次还要带我去海边 🌅",
+    "吵架了，但他最后还是来哄我了 😤",
+    "异地第37天，好想抱抱他 🤗",
+    "他今天发了很多表情包，笑死我了 😂",
+    "一起做饭，他把厨房搞得乱七八糟 🍳",
+    "收到了他寄来的礼物，是我最喜欢的 🎁",
+    "视频聊了三个小时，说着说着就困了 😴",
+    "他记得我随口说过想吃的东西 💝",
+    "今天纪念日，他准备了惊喜 🎉"
+  ],
+  "mood_tags": [
+    {"id": "happy", "name": "开心", "emoji": "😊", "color": "#FFD93D"},
+    {"id": "sweet", "name": "甜蜜", "emoji": "💕", "color": "#FF6B9D"},
+    {"id": "miss", "name": "想念", "emoji": "🥺", "color": "#AEC6CF"},
+    {"id": "excited", "name": "激动", "emoji": "🤩", "color": "#FF8C42"},
+    {"id": "calm", "name": "平静", "emoji": "😌", "color": "#C4E538"},
+    {"id": "sad", "name": "难过", "emoji": "😢", "color": "#B8B8D1"},
+    {"id": "angry", "name": "生气", "emoji": "😤", "color": "#FF6B6B"}
+  ],
+  "diary_types": [
+    {
+      "id": "daily",
+      "name": "日常随笔",
+      "icon": "📝",
+      "prompt_template": "base_diary",
+      "default_style": "real"
+    },
+    {
+      "id": "sweet",
+      "name": "甜蜜时刻",
+      "icon": "💕",
+      "prompt_template": "base_diary",
+      "default_style": "warm"
+    },
+    {
+      "id": "highlight",
+      "name": "高光时刻",
+      "icon": "🎉",
+      "prompt_template": "highlight_moment",
+      "default_style": "poetic"
+    },
+    {
+      "id": "quarrel",
+      "name": "小吵小闹",
+      "icon": "😤",
+      "prompt_template": "quarrel_resolve",
+      "default_style": "real"
+    },
+    {
+      "id": "travel",
+      "name": "旅行记录",
+      "icon": "✈️",
+      "prompt_template": "travel_log",
+      "default_style": "poetic"
+    }
+  ]
+}

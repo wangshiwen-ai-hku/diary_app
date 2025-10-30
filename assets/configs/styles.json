@@ -1,0 +1,49 @@
+{
+  "styles": [
+    {
+      "id": "warm",
+      "name": "温馨",
+      "icon": "❤️",
+      "description": "温柔细腻，充满爱意",
+      "word_count_min": 300,
+      "word_count_max": 500,
+      "emoji_count": 3,
+      "tone": "gentle",
+      "example_keywords": ["温暖", "关怀", "幸福", "珍惜"]
+    },
+    {
+      "id": "poetic",
+      "name": "诗意",
+      "icon": "🌙",
+      "description": "文艺浪漫，富有诗意",
+      "word_count_min": 400,
+      "word_count_max": 600,
+      "emoji_count": 2,
+      "tone": "literary",
+      "example_keywords": ["月光", "星辰", "时光", "温柔"]
+    },
+    {
+      "id": "real",
+      "name": "真实",
+      "icon": "😊",
+      "description": "口语化，原汁原味",
+      "word_count_min": 200,
+      "word_count_max": 400,
+      "emoji_count": 4,
+      "tone": "casual",
+      "example_keywords": ["今天", "我们", "哈哈", "开心"]
+    },
+    {
+      "id": "funny",
+      "name": "搞笑",
+      "icon": "😄",
+      "description": "幽默风趣，逗趣可爱",
+      "word_count_min": 250,
+      "word_count_max": 450,
+      "emoji_count": 5,
+      "tone": "humorous",
+      "example_keywords": ["哈哈", "傻", "笑死", "可爱"]
+    }
+  ],
+  "default_style": "warm"
+}
