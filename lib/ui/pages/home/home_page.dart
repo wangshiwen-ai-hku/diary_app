@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../data/models/diary.dart';
 import '../../../data/providers/diary_provider.dart';
 import '../../../data/providers/theme_provider.dart';
@@ -24,32 +25,22 @@ class HomePage extends ConsumerWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Row(
-            children: [
-              Icon(
-                Icons.favorite,
-                color: theme.colorScheme.primary.withOpacity(0.8),
-                size: 28,
-              ),
-              const SizedBox(width: 12),
-              Text(
-                'Our Diary',
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                  color: theme.brightness == Brightness.dark 
-                      ? Colors.white.withOpacity(0.95)
-                      : const Color(0xFF2D2D2D),
-                ),
-              ),
-            ],
+          centerTitle: true,
+          title: Text(
+            'Our Story',
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 28,
+              fontWeight: FontWeight.w700,
+              color: theme.colorScheme.onSurface,
+              letterSpacing: 1.0,
+            ),
           ),
           actions: [
             IconButton(
               icon: Icon(
                 Icons.settings_outlined,
-                color: theme.brightness == Brightness.dark
-                    ? Colors.white.withOpacity(0.85)
-                    : const Color(0xFF4A4A4A),
+                color: theme.colorScheme.onSurface.withOpacity(0.8),
+                size: 24,
               ),
               onPressed: () {
                 Navigator.of(context).push(
@@ -60,7 +51,7 @@ class HomePage extends ConsumerWidget {
               },
               tooltip: 'Settings',
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 16),
           ],
         ),
         body: SafeArea(
@@ -76,16 +67,25 @@ class HomePage extends ConsumerWidget {
               ),
             );
           },
-          icon: const Icon(Icons.add),
-          label: const Text('New Entry'),
+          icon: const Icon(Icons.edit_outlined),
+          label: Text(
+            'WRITE',
+            style: GoogleFonts.lato(
+              fontWeight: FontWeight.w600,
+              letterSpacing: 1.5,
+            ),
+          ),
+          backgroundColor: theme.colorScheme.primary,
+          foregroundColor: theme.colorScheme.onPrimary,
+          elevation: 4,
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
 
   Widget _buildEmptyState(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
     
     return Center(
       child: Column(
@@ -94,41 +94,39 @@ class HomePage extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(32),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withOpacity(0.08),
+              color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
               shape: BoxShape.circle,
+              border: Border.all(
+                color: theme.colorScheme.onSurface.withOpacity(0.1),
+                width: 1,
+              ),
             ),
             child: Icon(
               Icons.auto_stories_outlined,
-              size: 80,
-              color: theme.colorScheme.primary.withOpacity(0.6),
+              size: 64,
+              color: theme.colorScheme.onSurface.withOpacity(0.5),
             ),
           ),
           const SizedBox(height: 32),
           Text(
-            'No Entries Yet',
-            style: theme.textTheme.headlineMedium?.copyWith(
-              color: isDark ? Colors.white.withOpacity(0.9) : const Color(0xFF3A3A3A),
+            'Your Story Begins Here',
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: theme.colorScheme.onSurface.withOpacity(0.9),
+              letterSpacing: 0.5,
             ),
           ),
           const SizedBox(height: 12),
           Text(
-            'Start your journey by creating\nyour first diary entry',
+            'Capture your first memory together',
             textAlign: TextAlign.center,
-            style: theme.textTheme.bodyLarge?.copyWith(
-              color: isDark ? Colors.white.withOpacity(0.7) : const Color(0xFF6B6B6B),
+            style: GoogleFonts.lato(
+              fontSize: 16,
+              color: theme.colorScheme.onSurface.withOpacity(0.6),
+              letterSpacing: 0.5,
+              height: 1.5,
             ),
-          ),
-          const SizedBox(height: 32),
-          ElevatedButton.icon(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const CreateDiaryPage(),
-                ),
-              );
-            },
-            icon: const Icon(Icons.add),
-            label: const Text('Create First Entry'),
           ),
         ],
       ),
@@ -173,7 +171,7 @@ class _SlidingDiaryContainerState extends State<_SlidingDiaryContainer> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 0.84);
+    _pageController = PageController(viewportFraction: 0.85);
     _pageController.addListener(() {
       setState(() => _pageOffset = _pageController.page ?? 0);
     });
@@ -190,22 +188,13 @@ class _SlidingDiaryContainerState extends State<_SlidingDiaryContainer> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(40, 20, 40, 10),
-          child: Text(
-            'Your Memories',
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white.withOpacity(0.95)
-                  : const Color(0xFF2D2D2D),
-            ),
-          ),
-        ),
-        Expanded(
+        const Spacer(flex: 1),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.65,
           child: PageView.builder(
             controller: _pageController,
             itemCount: widget.diaries.length,
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               final diary = widget.diaries[index];
               return SlidingDiaryCard(
@@ -216,6 +205,7 @@ class _SlidingDiaryContainerState extends State<_SlidingDiaryContainer> {
             },
           ),
         ),
+        const Spacer(flex: 2),
       ],
     );
   }

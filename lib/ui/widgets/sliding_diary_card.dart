@@ -158,7 +158,7 @@ class _SlidingDiaryCardState extends ConsumerState<SlidingDiaryCard>
                         children: [
                           Text(
                             _getTypeTitle(widget.diary.type),
-                            style: GoogleFonts.cormorantGaramond(
+                            style: GoogleFonts.playfairDisplay(
                               fontSize: 32,
                               fontWeight: FontWeight.w700,
                               color: themeColors.onPrimary,
@@ -169,7 +169,7 @@ class _SlidingDiaryCardState extends ConsumerState<SlidingDiaryCard>
                           const SizedBox(height: 12),
                           Text(
                             date,
-                            style: GoogleFonts.cormorantGaramond(
+                            style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                               color: themeColors.onPrimary.withOpacity(0.9),
@@ -193,7 +193,7 @@ class _SlidingDiaryCardState extends ConsumerState<SlidingDiaryCard>
                         if (widget.diary.mood != null) ...[
                           Text(
                             _getMoodText(widget.diary.mood!),
-                            style: GoogleFonts.cormorantGaramond(
+                            style: GoogleFonts.playfairDisplay(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                               color: isDark 
@@ -221,7 +221,7 @@ class _SlidingDiaryCardState extends ConsumerState<SlidingDiaryCard>
                           ),
                           child: Text(
                             _getStyleLabel(widget.diary.style),
-                            style: GoogleFonts.cormorantGaramond(
+                            style: GoogleFonts.lato(
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
                               color: themeColors.primary,
@@ -236,7 +236,7 @@ class _SlidingDiaryCardState extends ConsumerState<SlidingDiaryCard>
                         Center(
                           child: Text(
                             'TAP TO VIEW DIARY',
-                            style: GoogleFonts.cormorantGaramond(
+                            style: GoogleFonts.lato(
                               fontSize: 11,
                               fontWeight: FontWeight.w600,
                               color: isDark 
@@ -321,7 +321,7 @@ class _SlidingDiaryCardState extends ConsumerState<SlidingDiaryCard>
                     children: [
                       Text(
                         'DIARY CONTENT',
-                        style: GoogleFonts.cormorantGaramond(
+                        style: GoogleFonts.lato(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                           color: themeColors.primary,
@@ -355,7 +355,7 @@ class _SlidingDiaryCardState extends ConsumerState<SlidingDiaryCard>
                     child: MarkdownBody(
                       data: widget.diary.aiContent ?? widget.diary.rawContent,
                       styleSheet: MarkdownStyleSheet(
-                        p: GoogleFonts.cormorantGaramond(
+                        p: GoogleFonts.lato(
                           fontSize: 16,
                           height: 1.9,
                           color: isDark 
@@ -363,13 +363,13 @@ class _SlidingDiaryCardState extends ConsumerState<SlidingDiaryCard>
                               : themeColors.dark,
                           letterSpacing: 0.3,
                         ),
-                        h1: GoogleFonts.cormorantGaramond(
+                        h1: GoogleFonts.playfairDisplay(
                           fontSize: 24,
                           fontWeight: FontWeight.w700,
                           height: 1.3,
                           color: themeColors.primary,
                         ),
-                        h2: GoogleFonts.cormorantGaramond(
+                        h2: GoogleFonts.playfairDisplay(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                           height: 1.3,

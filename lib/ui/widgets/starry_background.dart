@@ -59,9 +59,9 @@ class _StarryBackgroundState extends State<StarryBackground>
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color(0xFF0F0F1E),
-                Color(0xFF1A1A2E),
-                Color(0xFF16213E),
+                Color(0xFF000000), // Black
+                Color(0xFF1A1A1A), // Dark Grey
+                Color(0xFF050505), // Almost Black
               ],
             ),
           ),
@@ -107,7 +107,7 @@ class StarPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = Colors.white;
+    final paint = Paint()..color = const Color(0xFFC0C0C0); // Silver stars
 
     for (var star in stars) {
       // Update position

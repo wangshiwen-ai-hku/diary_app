@@ -105,14 +105,20 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text('设置'),
+        title: Text(
+          'Settings',
+          style: GoogleFonts.playfairDisplay(
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.5,
+          ),
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           _buildSection(
             context,
-            title: '亮度模式',
+            title: 'Appearance',
             children: [
               _buildBrightnessToggle(context, ref, brightness),
             ],
@@ -122,47 +128,49 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           
           _buildSection(
             context,
-            title: '外观主题',
+            title: 'Theme',
             children: [
-              _buildThemeCard(context, ref, 'dark_mode', 'Dark Mode', currentTheme),
-              _buildThemeCard(context, ref, 'light_mode', 'Light Mode', currentTheme),
-              _buildThemeCard(context, ref, 'warm_beige', 'Warm Beige', currentTheme),
-              _buildThemeCard(context, ref, 'soft_blue', 'Soft Blue', currentTheme),
-              _buildThemeCard(context, ref, 'sage_green', 'Sage Green', currentTheme),
+              _buildThemeCard(context, ref, 'silver_dark', 'Silver Dark', currentTheme),
+              _buildThemeCard(context, ref, 'silver_light', 'Silver Light', currentTheme),
+              _buildThemeCard(context, ref, 'dark_mode', 'Classic Dark', currentTheme),
+              _buildThemeCard(context, ref, 'light_mode', 'Classic Light', currentTheme),
             ],
           ),
           
           const SizedBox(height: 24),
           _buildSection(
             context,
-            title: '情侣信息',
+            title: 'Profile',
             children: [
               _buildEditableListTile(
                 context,
                 icon: Icons.person_outline,
-                title: '我的昵称',
+                title: 'My Name',
                 controller: _userNameController,
-                hint: '请输入你的昵称',
+                hint: 'Enter your name',
               ),
               _buildEditableListTile(
                 context,
                 icon: Icons.favorite_border,
-                title: 'TA的昵称',
+                title: 'Partner\'s Name',
                 controller: _partnerNameController,
-                hint: '请输入TA的昵称',
+                hint: 'Enter partner\'s name',
               ),
               _buildDateListTile(
                 context,
                 ref,
                 icon: Icons.calendar_today_outlined,
-                title: '在一起的日子',
+                title: 'Anniversary',
               ),
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: ElevatedButton.icon(
                   onPressed: _saveUserInfo,
                   icon: const Icon(Icons.save_outlined),
-                  label: const Text('保存信息'),
+                  label: Text(
+                    'Save Profile',
+                    style: GoogleFonts.lato(fontWeight: FontWeight.w600),
+                  ),
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size(double.infinity, 48),
                   ),
@@ -175,22 +183,22 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           
           _buildSection(
             context,
-            title: 'AI设置',
+            title: 'AI Configuration',
             children: [
               _buildListTile(
                 icon: Icons.auto_awesome,
-                title: '默认生成风格',
-                subtitle: '温馨',
+                title: 'Default Style',
+                subtitle: 'Warm',
                 onTap: () {
-                  // TODO: 选择默认风格
+                  // TODO: Select default style
                 },
               ),
               _buildListTile(
                 icon: Icons.language,
-                title: 'AI模型配置',
-                subtitle: '当前使用：GPT-4',
+                title: 'AI Model',
+                subtitle: 'Current: GPT-4',
                 onTap: () {
-                  // TODO: 切换AI模型
+                  // TODO: Switch AI model
                 },
               ),
             ],
@@ -200,34 +208,34 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           
           _buildSection(
             context,
-            title: '数据管理',
+            title: 'Data Management',
             children: [
               _buildListTile(
                 icon: Icons.cloud_upload,
-                title: '云端同步',
-                subtitle: '自动同步日记到云端',
+                title: 'Cloud Sync',
+                subtitle: 'Auto sync to cloud',
                 trailing: Switch(
                   value: false,
                   onChanged: (value) {
-                    // TODO: 切换云端同步
+                    // TODO: Toggle cloud sync
                   },
                 ),
                 onTap: null,
               ),
               _buildListTile(
                 icon: Icons.download,
-                title: '导出日记',
-                subtitle: '导出为PDF或Markdown',
+                title: 'Export Data',
+                subtitle: 'Export as PDF or Markdown',
                 onTap: () {
-                  // TODO: 导出功能
+                  // TODO: Export function
                 },
               ),
               _buildListTile(
                 icon: Icons.backup,
-                title: '备份与恢复',
-                subtitle: '本地备份管理',
+                title: 'Backup & Restore',
+                subtitle: 'Manage local backups',
                 onTap: () {
-                  // TODO: 备份功能
+                  // TODO: Backup function
                 },
               ),
             ],
@@ -237,36 +245,19 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           
           _buildSection(
             context,
-            title: '外观',
-            children: [
-              _buildListTile(
-                icon: Icons.font_download,
-                title: '字体设置',
-                subtitle: '选择你喜欢的字体',
-                onTap: () {
-                  // TODO: 字体设置
-                },
-              ),
-            ],
-          ),
-          
-          const SizedBox(height: 24),
-          
-          _buildSection(
-            context,
-            title: '其他',
+            title: 'About',
             children: [
               _buildListTile(
                 icon: Icons.help_outline,
-                title: '帮助与反馈',
+                title: 'Help & Feedback',
                 onTap: () {
-                  // TODO: 帮助页面
+                  // TODO: Help page
                 },
               ),
               _buildListTile(
                 icon: Icons.info_outline,
-                title: '关于我们',
-                subtitle: '版本 1.0.0',
+                title: 'About Us',
+                subtitle: 'Version 1.0.0',
                 onTap: () {
                   _showAboutDialog(context);
                 },
@@ -276,19 +267,22 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           
           const SizedBox(height: 32),
           
-          // 退出登录按钮
+          // Logout button
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: OutlinedButton(
               onPressed: () {
-                // TODO: 退出登录
+                // TODO: Logout
               },
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.red,
                 side: const BorderSide(color: Colors.red),
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
-              child: const Text('退出登录'),
+              child: Text(
+                'Logout',
+                style: GoogleFonts.lato(fontWeight: FontWeight.w600),
+              ),
             ),
           ),
         ],
@@ -308,9 +302,11 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           padding: const EdgeInsets.only(left: 16, bottom: 8),
           child: Text(
             title,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
               color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold,
+              letterSpacing: 1.0,
             ),
           ),
         ),
@@ -318,6 +314,9 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: Theme.of(context).colorScheme.outline.withOpacity(0.1),
+            ),
           ),
           child: Column(children: children),
         ),
@@ -333,10 +332,21 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
     VoidCallback? onTap,
   }) {
     return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
-      subtitle: subtitle != null ? Text(subtitle) : null,
-      trailing: trailing ?? const Icon(Icons.chevron_right),
+      leading: Icon(icon, size: 22),
+      title: Text(
+        title,
+        style: GoogleFonts.lato(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      subtitle: subtitle != null 
+          ? Text(
+              subtitle,
+              style: GoogleFonts.lato(fontSize: 13),
+            ) 
+          : null,
+      trailing: trailing ?? const Icon(Icons.chevron_right, size: 20),
       onTap: onTap,
     );
   }
@@ -344,13 +354,13 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
   void _showAboutDialog(BuildContext context) {
     showAboutDialog(
       context: context,
-      applicationName: '我们的日记',
+      applicationName: 'Our Diary',
       applicationVersion: '1.0.0',
       applicationIcon: const Icon(Icons.favorite, size: 48, color: Colors.pink),
       children: [
-        const Text('用AI记录你们的美好时光'),
+        const Text('Record your beautiful moments with AI'),
         const SizedBox(height: 8),
-        const Text('让每一个瞬间都值得珍藏'),
+        const Text('Make every moment worth cherishing'),
       ],
     );
   }
@@ -383,7 +393,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
               const SizedBox(width: 12),
               Text(
                 title,
-                style: GoogleFonts.cormorantGaramond(
+                style: GoogleFonts.playfairDisplay(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: theme.colorScheme.onSurface,
@@ -394,13 +404,13 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           const SizedBox(height: 12),
           TextField(
             controller: controller,
-            style: GoogleFonts.cormorantGaramond(
+            style: GoogleFonts.lato(
               fontSize: 16,
               color: theme.colorScheme.onSurface,
             ),
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: GoogleFonts.cormorantGaramond(
+              hintStyle: GoogleFonts.lato(
                 fontSize: 16,
                 color: theme.colorScheme.onSurface.withOpacity(0.5),
               ),
@@ -430,11 +440,11 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
     final theme = Theme.of(context);
     final anniversaryDate = ref.watch(anniversaryDateProvider);
     
-    String subtitle = '点击设置纪念日';
+    String subtitle = 'Tap to set anniversary';
     if (anniversaryDate != null) {
       final now = DateTime.now();
       final difference = now.difference(anniversaryDate).inDays;
-      subtitle = '已在一起 $difference 天';
+      subtitle = 'Together for $difference days';
     }
     
     return InkWell(
@@ -460,7 +470,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.cormorantGaramond(
+                    style: GoogleFonts.playfairDisplay(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: theme.colorScheme.onSurface,
@@ -469,7 +479,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                   const SizedBox(height: 4),
                   Text(
                     subtitle,
-                    style: GoogleFonts.cormorantGaramond(
+                    style: GoogleFonts.lato(
                       fontSize: 14,
                       color: theme.colorScheme.onSurface.withOpacity(0.6),
                     ),
@@ -517,8 +527,8 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  brightness == Brightness.dark ? '暗色模式' : '亮色模式',
-                  style: GoogleFonts.cormorantGaramond(
+                  brightness == Brightness.dark ? 'Dark Mode' : 'Light Mode',
+                  style: GoogleFonts.playfairDisplay(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                     color: Theme.of(context).colorScheme.onSurface,
@@ -526,8 +536,8 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '切换全局亮度',
-                  style: GoogleFonts.cormorantGaramond(
+                  'Toggle app brightness',
+                  style: GoogleFonts.lato(
                     fontSize: 14,
                     color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
                   ),
@@ -613,7 +623,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                 children: [
                   Text(
                     themeName,
-                    style: GoogleFonts.cormorantGaramond(
+                    style: GoogleFonts.playfairDisplay(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).colorScheme.onSurface,

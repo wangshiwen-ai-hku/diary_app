@@ -166,7 +166,7 @@ From "Our Diary"
                             const SizedBox(width: 12),
                             Text(
                               _getTypeTitle(_currentDiary.type),
-                              style: GoogleFonts.cormorantGaramond(
+                              style: GoogleFonts.playfairDisplay(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
                                 color: themeColors.primary,
@@ -193,7 +193,7 @@ From "Our Diary"
                                     const SizedBox(width: 8),
                                     Text(
                                       _getMoodText(_currentDiary.mood!),
-                                      style: GoogleFonts.cormorantGaramond(
+                                      style: GoogleFonts.lato(
                                         fontSize: 15,
                                         color: isDark 
                                             ? themeColors.light
@@ -214,7 +214,7 @@ From "Our Diary"
                                     const SizedBox(width: 8),
                                     Text(
                                       _currentDiary.location!,
-                                      style: GoogleFonts.cormorantGaramond(
+                                      style: GoogleFonts.lato(
                                         fontSize: 15,
                                         color: isDark 
                                             ? themeColors.light
@@ -254,7 +254,7 @@ From "Our Diary"
                       ),
                       child: Text(
                         _currentDiary.rawContent,
-                        style: GoogleFonts.cormorantGaramond(
+                        style: GoogleFonts.lato(
                           fontSize: 16,
                           height: 1.9,
                           color: isDark 
@@ -333,7 +333,7 @@ From "Our Diary"
                                 : MarkdownBody(
                                     data: _currentDiary.aiContent!,
                                     styleSheet: MarkdownStyleSheet(
-                                      p: GoogleFonts.cormorantGaramond(
+                                      p: GoogleFonts.lato(
                                         fontSize: 17,
                                         height: 1.9,
                                         color: isDark 
@@ -341,19 +341,19 @@ From "Our Diary"
                                             : themeColors.dark,
                                         letterSpacing: 0.3,
                                       ),
-                                      h1: GoogleFonts.cormorantGaramond(
+                                      h1: GoogleFonts.playfairDisplay(
                                         fontSize: 26,
                                         fontWeight: FontWeight.w700,
                                         height: 1.3,
                                         color: themeColors.primary,
                                       ),
-                                      h2: GoogleFonts.cormorantGaramond(
+                                      h2: GoogleFonts.playfairDisplay(
                                         fontSize: 22,
                                         fontWeight: FontWeight.w600,
                                         height: 1.3,
                                         color: themeColors.medium,
                                       ),
-                                      h3: GoogleFonts.cormorantGaramond(
+                                      h3: GoogleFonts.playfairDisplay(
                                         fontSize: 19,
                                         fontWeight: FontWeight.w600,
                                         height: 1.3,
@@ -414,7 +414,7 @@ From "Our Diary"
             const SizedBox(width: 10),
             Text(
               title,
-              style: GoogleFonts.cormorantGaramond(
+              style: GoogleFonts.playfairDisplay(
                 fontSize: 20,
                 color: color,
                 fontWeight: FontWeight.w700,

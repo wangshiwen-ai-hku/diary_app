@@ -75,4 +75,32 @@ class AppColors {
     onSurface: Color(0xFF2A332A),
     surfaceContainerHighest: Color(0xFFFFFFFF),
   );
+  // Silver & Pink - 银灰粉色主题 (主推)
+  static const silverDark = ColorScheme(
+    brightness: Brightness.dark,
+    primary: Color(0xFFC0C0C0), // Silver
+    onPrimary: Color(0xFF000000),
+    secondary: Color(0xFFFFD1DC), // Pale Pink
+    onSecondary: Color(0xFF000000),
+    tertiary: Color(0xFF808080), // Grey
+    error: Color(0xFFCF6679),
+    onError: Color(0xFF000000),
+    surface: Color(0xFF000000), // Black
+    onSurface: Color(0xFFE0E0E0),
+    surfaceContainerHighest: Color(0xFF1A1A1A), // Dark Grey
+  );
+
+  static const silverLight = ColorScheme(
+    brightness: Brightness.light,
+    primary: Color(0xFF808080), // Grey
+    onPrimary: Color(0xFFFFFFFF),
+    secondary: Color(0xFFFFD1DC), // Pale Pink
+    onSecondary: Color(0xFF000000),
+    tertiary: Color(0xFFC0C0C0), // Silver
+    error: Color(0xFFB00020),
+    onError: Color(0xFFFFFFFF),
+    surface: Color(0xFFF5F5F5), // White Smoke
+    onSurface: Color(0xFF000000),
+    surfaceContainerHighest: Color(0xFFE0E0E0),
+  );
 }

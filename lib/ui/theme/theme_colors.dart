@@ -113,8 +113,36 @@ class SystemThemeColors {
     onDark: Color(0xFFFFFFFF),
   );
   
+  // Silver Dark Theme
+  static const silverDark = ThemeColors(
+    primary: Color(0xFFC0C0C0), // Silver
+    light: Color(0xFFE0E0E0), // Light Silver
+    medium: Color(0xFF808080), // Grey
+    dark: Color(0xFF404040), // Dark Grey
+    onPrimary: Color(0xFF000000),
+    onLight: Color(0xFF000000),
+    onMedium: Color(0xFFFFFFFF),
+    onDark: Color(0xFFFFFFFF),
+  );
+
+  // Silver Light Theme
+  static const silverLight = ThemeColors(
+    primary: Color(0xFF808080), // Grey
+    light: Color(0xFFC0C0C0), // Silver
+    medium: Color(0xFF606060), // Dark Grey
+    dark: Color(0xFF404040), // Darker Grey
+    onPrimary: Color(0xFFFFFFFF),
+    onLight: Color(0xFF000000),
+    onMedium: Color(0xFFFFFFFF),
+    onDark: Color(0xFFFFFFFF),
+  );
+  
   static ThemeColors getThemeColors(String themeName) {
     switch (themeName) {
+      case 'silver_dark':
+        return silverDark;
+      case 'silver_light':
+        return silverLight;
       case 'dark_mode':
         return darkMode;
       case 'light_mode':
@@ -126,7 +154,7 @@ class SystemThemeColors {
       case 'sage_green':
         return sageGreen;
       default:
-        return darkMode;
+        return silverDark;
     }
   }
 }

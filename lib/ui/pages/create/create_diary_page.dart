@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../data/models/diary.dart';
 import '../../../data/repositories/local_diary_repository.dart';
 
@@ -115,7 +116,13 @@ ${_contentController.text}
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('记录今天'),
+        title: Text(
+          'Record Today',
+          style: GoogleFonts.playfairDisplay(
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.5,
+          ),
+        ),
         actions: [
           TextButton.icon(
             onPressed: isGenerating ? null : _generateAIDiary,
@@ -126,7 +133,10 @@ ${_contentController.text}
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
                 : const Icon(Icons.auto_awesome),
-            label: Text(isGenerating ? '生成中...' : 'AI生成'),
+            label: Text(
+              isGenerating ? 'Generating...' : 'AI Generate',
+              style: GoogleFonts.lato(fontWeight: FontWeight.w600),
+            ),
           ),
         ],
       ),
@@ -135,51 +145,64 @@ ${_contentController.text}
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 心情选择
+            // Mood selection
             Text(
-              '今天的心情',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+              'How are you feeling?',
+              style: GoogleFonts.playfairDisplay(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: theme.colorScheme.onSurface,
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             _buildMoodSelector(selectedMood),
             
-            const SizedBox(height: 24),
+            const SizedBox(height: 32),
             
-            // 风格选择
+            // Style selection
             Text(
-              '生成风格',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+              'Writing Style',
+              style: GoogleFonts.playfairDisplay(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: theme.colorScheme.onSurface,
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             _buildStyleSelector(selectedStyle),
             
-            const SizedBox(height: 24),
+            const SizedBox(height: 32),
             
-            // 输入框
+            // Input
             Text(
-              '记录内容',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+              'Your Story',
+              style: GoogleFonts.playfairDisplay(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: theme.colorScheme.onSurface,
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
-                color: theme.colorScheme.surface,
+                color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: theme.colorScheme.outline.withOpacity(0.2),
+                  color: theme.colorScheme.onSurface.withOpacity(0.1),
                 ),
               ),
               child: TextField(
                 controller: _contentController,
                 maxLines: 10,
+                style: GoogleFonts.lato(
+                  fontSize: 16,
+                  height: 1.5,
+                ),
                 decoration: InputDecoration(
                   hintText: _currentPlaceholder,
+                  hintStyle: GoogleFonts.lato(
+                    color: theme.colorScheme.onSurface.withOpacity(0.4),
+                  ),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.all(20),
                 ),
@@ -188,20 +211,21 @@ ${_contentController.text}
             
             const SizedBox(height: 16),
             
-            // 提示文本
+            // Hint
             Row(
               children: [
                 Icon(
                   Icons.lightbulb_outline,
                   size: 16,
-                  color: theme.colorScheme.secondary,
+                  color: theme.colorScheme.primary,
                 ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    '简单记录就好，AI会帮你扩写成完整的日记',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.secondary,
+                    'Just write down your thoughts, AI will polish it for you.',
+                    style: GoogleFonts.lato(
+                      fontSize: 14,
+                      color: theme.colorScheme.onSurface.withOpacity(0.6),
                     ),
                   ),
                 ),

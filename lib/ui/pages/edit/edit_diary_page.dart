@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../data/models/diary.dart';
 import '../../../data/repositories/local_diary_repository.dart';
 import '../../widgets/diary_editor.dart';
@@ -53,11 +54,20 @@ class _EditDiaryPageState extends State<EditDiaryPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('编辑日记'),
+        title: Text(
+          'Edit Diary',
+          style: GoogleFonts.playfairDisplay(
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.5,
+          ),
+        ),
         actions: [
           TextButton(
             onPressed: _saveDiary,
-            child: const Text('保存'),
+            child: Text(
+              'Save',
+              style: GoogleFonts.lato(fontWeight: FontWeight.w600),
+            ),
           ),
         ],
       ),
@@ -66,11 +76,13 @@ class _EditDiaryPageState extends State<EditDiaryPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 原始内容
+            // Raw content
             Text(
-              '原始记录',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+              'Original Note',
+              style: GoogleFonts.playfairDisplay(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: theme.colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 12),
@@ -82,31 +94,35 @@ class _EditDiaryPageState extends State<EditDiaryPage> {
               maxLines: 8,
             ),
             
-            const SizedBox(height: 24),
+            const SizedBox(height: 32),
             
-            // AI内容
+            // AI content
             Row(
               children: [
                 Icon(
                   Icons.auto_awesome,
                   size: 20,
-                  color: theme.colorScheme.secondary,
+                  color: theme.colorScheme.primary,
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'AI美化版',
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    color: theme.colorScheme.secondary,
-                    fontWeight: FontWeight.bold,
+                  'AI Enhanced',
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
                 const Spacer(),
                 TextButton.icon(
                   onPressed: () {
-                    // TODO: 重新生成AI内容
+                    // TODO: Regenerate AI content
                   },
                   icon: const Icon(Icons.refresh, size: 18),
-                  label: const Text('重新生成'),
+                  label: Text(
+                    'Regenerate',
+                    style: GoogleFonts.lato(fontWeight: FontWeight.w600),
+                  ),
                 ),
               ],
             ),
@@ -120,12 +136,15 @@ class _EditDiaryPageState extends State<EditDiaryPage> {
             
             const SizedBox(height: 16),
             
-            // 提示
+            // Hint
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: theme.colorScheme.primaryContainer.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: theme.colorScheme.primary.withOpacity(0.2),
+                ),
               ),
               child: Row(
                 children: [
@@ -137,8 +156,11 @@ class _EditDiaryPageState extends State<EditDiaryPage> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      '支持Markdown格式编辑，可以自由调整AI生成的内容',
-                      style: theme.textTheme.bodySmall,
+                      'You can edit the AI generated content using Markdown.',
+                      style: GoogleFonts.lato(
+                        fontSize: 14,
+                        color: theme.colorScheme.onSurface.withOpacity(0.8),
+                      ),
                     ),
                   ),
                 ],
